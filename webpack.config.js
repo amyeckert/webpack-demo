@@ -2,6 +2,7 @@ const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const parts = require("./webpack.parts");
+
 const commonConfig = merge([
   {
     plugins: [
@@ -10,6 +11,7 @@ const commonConfig = merge([
       }),
     ],
   },
+  parts.loadCSS(),
 ]);
 
 const productionConfig = merge([]);
@@ -31,6 +33,7 @@ module.exports = mode => {
 };
 
 module.exports = {
+
   plugins: [
     new HtmlWebpackPlugin({
       title: "Webpack demo",
@@ -55,6 +58,27 @@ module.exports = {
     open: true, // Open the page in browser
     overlay: true, // catches and displays compilation-related errors and warnings.
     quiet: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          // style-loader
+          { loader: 'style-loader' },
+          // css-loader
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          // sass-loader
+          { loader: 'sass-loader' }
+        ]
+      }
+    ]
   },
 
 };
