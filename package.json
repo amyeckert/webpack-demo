@@ -4,23 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "start": "webpack-dev-server --config webpack.dev.js --open",
     "dashboard": "webpack-dashboard -- node index.js",
-    "build": "webpack --env production"
+    "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "bootstrap": "^4.3.1",
     "css-loader": "^3.2.0",
     "error-overlay-webpack-plugin": "^0.4.1",
     "fast-sass-loader": "^1.5.0",
+    "file-loader": "^4.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.4",
     "npm-install-webpack-plugin": "^4.0.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "popper.js": "^1.16.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
@@ -29,5 +35,8 @@
     "webpack-dev-server": "^3.8.2",
     "webpack-merge": "^4.2.2",
     "write-file-webpack-plugin": "^4.5.1"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^2.0.0"
   }
 }
